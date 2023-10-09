@@ -99,7 +99,26 @@ const transformer = function (str, fn) {
   console.log(`Transformer function ${fn.name}`);
 };
 
-//Note how we only pass in the function as an arument. The function is not called
+//Note how we only pass in the function as an argument. The function is not called
 //It will be the transformer function calling the function
 transformer('JavaScript is the best!', upperFirstWord);
 transformer('JavaScript is the best!', oneWord);
+
+///////////////////////////////////////
+// Functions Returning Functions
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+
+greeterHey('MATIAS');
+greet('GOOD MORNING')('VIETNAM!');
+
+const arrowGreeter = greeting => name => console.log(`${greeting} ${name}`);
+
+console.log('ARROW:');
+arrowGreeter('Hallo')('Deutschland');
